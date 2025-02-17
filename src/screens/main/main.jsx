@@ -31,8 +31,15 @@ function Main(){
         </Image>
       }
     }} />
-    <Tab.Screen name="Meus Agendamentos" component={AbaCalendar} options={{
+    <Tab.Screen name="Calendar" component={AbaCalendar} options={{
       headerTitleAlign: "center",
+      headerTitle:() =>{
+        return <Image 
+          source={icon.logo}
+          style={{ width: 170, height: 55}}
+          >
+        </Image>
+      },
       headerTintColor: COLORs.blue2,
       tabBarShowLabel: false,
       unmountOnBlur: true,
@@ -48,8 +55,15 @@ function Main(){
       }
       
     }}/>
-    <Tab.Screen name="Meu Perfil" component={AbaProfile} options={{
+    <Tab.Screen name="Profile" component={AbaProfile} options={{
       headerTitleAlign: "center",
+      headerTitle:() =>{
+        return <Image 
+          source={icon.logo}
+          style={{ width: 170, height: 55}}
+          >
+        </Image>
+      },
       headerTintColor: COLORs.blue2,
       tabBarShowLabel: false,
       unmountOnBlur: true,

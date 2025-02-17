@@ -1,16 +1,17 @@
 import { Alert, View, FlatList } from "react-native";
 import { styles } from "./abacalendar.style";
-import { useEffect, useState } from "react";
+import { useState, useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import Appointment from "../../components/appointments/appointment";
 import api from "../../constants/api";
 
 function AbaCalendar() {
   const [appointments, setAppointments] = useState([]);
-  const [refresh, setRefresh] = useState(0);
 
   async function LoadAppointments() {
     try {
       const response = await api.get("/appointments");
+
       if (response.data) {
         setAppointments(response.data);
       }
@@ -19,15 +20,12 @@ function AbaCalendar() {
     }
   }
 
-  useEffect(() => {
-    LoadAppointments();
-  }, [refresh]);
-
   async function DeleteAppointment(id_appointment) {
     try {
       const response = await api.delete(`/appointments/${id_appointment}`);
+
       if (response.data?.id_appointment) {
-        setAppointments(prev => prev.filter(appt => appt.id_appointment !== id_appointment));
+        LoadAppointments(); // Recarrega a lista após o delete
       }
     } catch (error) {
       Alert.alert(error.response?.data.error || "Ocorreu um erro. Tente novamente mais tarde.");
@@ -44,6 +42,13 @@ function AbaCalendar() {
       Alert.alert("Erro ao adicionar appointment.");
     }
   }
+
+  // 🔥 Recarregar os dados sempre que a aba for focada
+  useFocusEffect(
+    useCallback(() => {
+      LoadAppointments();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>

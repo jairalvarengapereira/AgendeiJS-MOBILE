@@ -1,10 +1,9 @@
 import { Alert, View, Text, FlatList, Image } from "react-native";
 import { styles } from "./services.style";
-// import { doctors_services } from "../../constants/data";
+import { useEffect, useState } from "react";
 import icon from "../../constants/icon";
 import Service from "../../components/service/service";
 import api from "../../constants/api";
-import { useEffect, useState } from "react";
 
 
 function Services(props){

@@ -11,11 +11,11 @@ function RoutesPrivate(){
   return <Stack.Navigator>
 
     <Stack.Screen name="main" component={Main} 
-      options={{
-        headerShown: false
-      }}  
+      options={{ headerShown: false }}  
     />
-    <Stack.Screen name="services" component={Services} 
+    <Stack.Screen 
+      name="services" 
+      component={Services} 
       options={{
         headerTitle: 'Serviços',
         headerTitleAlign: 'center',
@@ -32,9 +32,6 @@ function RoutesPrivate(){
         headerTitleAlign: 'center',
         headerTintColor: COLORs.blue2,
         headerShadowVisible: false,
-        // headerStyle:{
-        //   backgroundColor: COLORs.white,
-        // }
       }}  
     />
 

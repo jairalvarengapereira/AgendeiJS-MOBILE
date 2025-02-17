@@ -48,7 +48,7 @@ function Appointment(props) {
       {/* Botão Cancelar reserva */}
       <View style={styles.containerButton}>
         <Botao 
-          text="Cancelar" 
+          text="Cancelar Reserva" 
           theme='danger'
           onPress={() => props.onPress(props.id_appointment)}
         />

@@ -18,8 +18,8 @@ export const styles = {
   },
 
   logo:{
-    width: 100,
-    height: 120,
+    width: 220,
+    height: 70,
   },
 
   input:{
